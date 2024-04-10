@@ -1,0 +1,9 @@
+- name: Echo Hello Playbook
+  hosts: local
+  vars:
+    greeting: "Hello"
+
+  tasks:
+    - name: Echo Greeting
+      debug:
+        msg: "{{ greeting }}"
