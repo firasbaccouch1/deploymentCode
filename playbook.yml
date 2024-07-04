@@ -1,9 +1,13 @@
-- name: Echo Hello Playbook
-  hosts: local
-  vars:
-    greeting: "Hello"
-
+---
+- name: Backup Laravel Databases
+  hosts: all
   tasks:
-    - name: Echo Greeting
-      debug:
-        msg: "{{ greeting }}"
+    - name: Change to the Laravel directory
+      command: cd /MyApp/laravel
+      args:
+        chdir: /MyApp/laravel
+
+    - name: Run PHP artisan backup:databases
+      command: php artisan backup:databases
+      args:
+        chdir: /MyApp/laravel
